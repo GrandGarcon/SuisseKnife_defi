@@ -1,0 +1,11 @@
+node_modules/
+.idea/
+.vscode/
+build/
+coverage
+artifacts
+cache
+coverage.json
+.log
+.env
+ganache.log

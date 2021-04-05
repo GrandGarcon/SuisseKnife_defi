@@ -1,0 +1,63 @@
+{
+  "name": "zerion-defi-sdk",
+  "version": "1.0.0",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "compile": "npx truffle compile",
+    "deploy:development": "npx truffle deploy --network development",
+    "deploy:mainnet": "npx truffle deploy --network mainnet",
+    "deploy:kovan": "npx truffle deploy --network kovan",
+    "test:adapters": "TEST_FILES=./test/adapters/*.js ./scripts/test.sh",
+    "test:interactiveAdapters": "TEST_FILES=./test/interactiveAdapters/*.js ./scripts/test.sh",
+    "test:core": "TEST_FILES=./test/core/*.js ./scripts/test.sh",
+    "test": "npm run test:core",
+    "coverage": "node --max-old-space-size=4096 ./node_modules/.bin/truffle run coverage",
+    "lint:solhint": "npx solhint \"./contracts/**/*.sol\"",
+    "lint:eslint": "eslint .",
+    "lint": "npm run lint:solhint && npm run lint:eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "contracts/**/*.sol": "npx prettier --write",
+    "test/**/*.js": "npx eslint --fix",
+    "migrations_scripts/*.js": "npx eslint --fix"
+  },
+  "author": "Zerion Inc.",
+  "license": "LGPL-3.0-only",
+  "repository": "https://github.com/zeriontech/defi-sdk",
+  "dependencies": {
+    "@0x/sol-compiler": "4.1.1",
+    "@babel/core": "7.11.6",
+    "@babel/preset-env": "7.11.5",
+    "@babel/register": "7.11.5",
+    "@truffle/hdwallet-provider": "1.1.0",
+    "core-js": "3.6.5",
+    "dotenv": "8.2.0",
+    "regenerator-runtime": "0.13.7",
+    "truffle": "5.1.50"
+  },
+  "devDependencies": {
+    "@codechecks/client": "0.1.10",
+    "eslint": "7.11.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "eth-gas-reporter": "0.2.18",
+    "ganache-cli": "6.12.0",
+    "husky": "4.3.0",
+    "lint-staged": "10.4.1",
+    "mrm": "2.5.2",
+    "prettier": "2.1.2",
+    "prettier-plugin-solidity": "1.0.0-alpha.59",
+    "solhint": "3.2.1",
+    "solhint-plugin-prettier": "0.0.5",
+    "solidity-coverage": "0.7.11",
+    "truffle-plugin-verify": "0.5.0"
+  }
+}
